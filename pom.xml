@@ -8,10 +8,10 @@
         <version>2.2.6.RELEASE</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
-    <groupId>com.joachimprinzbach.incubator</groupId>
-    <artifactId>devops-octopus</artifactId>
+    <groupId>com.baloiseincubator</groupId>
+    <artifactId>octopus</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>devops-octopus</name>
+    <name>octopus</name>
 
     <properties>
         <java.version>1.8</java.version>
