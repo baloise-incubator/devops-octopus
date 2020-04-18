@@ -1,4 +1,4 @@
-package com.baloiseincubator.octopus.application;
+package com.baloiseincubator.octopus.example.application;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
