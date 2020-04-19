@@ -1,0 +1,20 @@
+language: shell
+services:
+  - docker
+
+env:
+  global:
+    # DOCKER_USERNAME
+    - secure: "OIbD+AvWxWrXt9zpToq2Y2cDv4ytdP1d3G9VxzONTZMjyhblhr2oUBQCYkrqsWIHW3Q2m7PzeVVDtfaO5j7Mxq9+4T8yfWHY5Cc9pKdVa1qGk05vgWDJfZlrBVyzFWKHZxkS4pRM5zCghc5XFGDCkWImrhQXdL9ADPP/NTBkdoMFSLvnDWIZ/7QiOpbayBJEJElzNFVCSkH9oI1Byua7ohRyQjmosLDp/xSs39Uny5uCSDR0VQBwBh8brm0q2Y2xlJ8uV8bwPHZ/5oNU16WGD0VCOhjo1Yy8GUPY5g3tx7dzRTuxTBqGc9HIQoUH9zIBCG3E7m6KsDxtlY39fsvjFDy/cKTSEWc7RKgk7CKJL49QLLLgWBrQNhCBS9tVmEBa07DfpypTK7DZlUJ9uaAvk3gRpzY9g9wMqjKoKujJ+32c+YNnFwYZSIpom1LpZrFYT7WVBidWG4ef/DdgXI7p8Hfq1ujd3N9IaNr/DHEA2PODaStKVRKpC9U+o1x1xh4YkeKCQR3J+qBT8Xhd1Wbi+Ly/94r68sUo8ncme6F7SeWighgGMUUg3jadU7bjx9Z2y/gQSXgmltsOHmWVRkmaNc022COw6EOCLA9br3k3OERPj24LvJDwqgQQUCNYgcImStFamCk6xA6IVmrJf1tzk/1pnLFLVoaRlhu+xM+2gv0="
+    # DOCKER_ACCESS_TOKEN
+    - secure: "b5syNLLYhNaKNdYgKF+Z/ukxQ5PyWC81kcYBOIkNitEED4eWX/U2Zm/uhrxamYJVU/fWvXskdOwyxe57G3ybVvqFiJ3Ta6cnnSw6aBqx1PcyptqEa3JKyreBNuM0XhovyoW3tR2/2LsYy+iKDtdLQxjzgZRi3OycU11TifV0uTqiroC9CTqVPlbmmR+E7rCpspVf9ossX9DUK1r38keHb0hNFeg/cwegU7Am4oKJi4H/IYr3UCL6jGNc6yGZw31L8VhmL/4GuSZgIlgMP6srgeu/1cZtUybDQ9EMuQUJXZRdZTIm4tSv/29vjY9pf/YXvrc1JMSQmCWFSFFNu3lnOFu6hfhzTWK5pRtAN1fVsj21YZ7/Fq9eZLMPCFtStMHR7B70CUliF9rk4/T0+xEmlQdEj+1AWdyJBdRr3UpsK8CkJ8ko0TezdCN8cDzqJF5OIaY4rr9g/H3Ft8EBSSiHOveHD+5ciKNGDWVa76ialYD8AyMGa3tgj5g2ZyeRBWV7VrfTpPfBa4TtOG+AyU8uWlKr22ig5hKP/uX8ocDFWZpq2Xp0lZ2Z1Wzf7SKlmxGcvJgvRyfLdsbF2yKT5V7A6HJlktcUFy5zcwM/Pmj4LWs1iis8F13QWQS5BD0YnoCo00+UNlu7iIhJwYaRPMf/5ZdCeIM5Y074Q/raDGhOF34="
+    - IMAGE_NAME=baloiseincubator/devops-octopus
+
+install: skip
+
+script:
+  - docker build -t $IMAGE_NAME:$TRAVIS_COMMIT .
+  - echo "$DOCKER_ACCESS_TOKEN" | docker login -u "$DOCKER_USERNAME" --password-stdin
+  - if [ "$TRAVIS_PULL_REQUEST" == "false" ] && [ "$TRAVIS_BRANCH" == "master" ]; then docker push $IMAGE_NAME:$TRAVIS_COMMIT; fi
+  - if [ -n "$TRAVIS_TAG" ]; then docker tag $IMAGE_NAME:$TRAVIS_COMMIT $IMAGE_NAME:$TRAVIS_TAG; fi
+  - if [ -n "$TRAVIS_TAG" ]; then docker push $IMAGE_NAME:$TRAVIS_TAG; fi
