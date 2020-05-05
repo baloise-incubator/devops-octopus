@@ -1,4 +1,4 @@
-package com.baloiseincubator.octopus.containerimage.application;
+package dev.baloise.octopus.containerimage.application;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

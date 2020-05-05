@@ -1,6 +1,6 @@
-package com.baloiseincubator.octopus.containerimage.application;
+package dev.baloise.octopus.containerimage.application;
 
-import com.baloiseincubator.octopus.containerimage.domain.Severity;
+import dev.baloise.octopus.containerimage.domain.Severity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

@@ -1,6 +1,6 @@
-package com.baloiseincubator.octopus.containerimage.infrastructure;
+package dev.baloise.octopus.containerimage.infrastructure;
 
-import com.baloiseincubator.octopus.containerimage.domain.ContainerImage;
+import dev.baloise.octopus.containerimage.domain.ContainerImage;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
