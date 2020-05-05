@@ -1,4 +1,4 @@
-package com.baloiseincubator.octopus.containerimage.domain;
+package dev.baloise.octopus.containerimage.domain;
 
 public enum Severity {
 

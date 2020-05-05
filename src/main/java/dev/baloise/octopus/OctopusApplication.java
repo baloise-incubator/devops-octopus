@@ -1,4 +1,4 @@
-package com.baloiseincubator.octopus;
+package dev.baloise.octopus;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

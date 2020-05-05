@@ -1,4 +1,4 @@
-package com.baloiseincubator.octopus.containerimage.infrastructure;
+package dev.baloise.octopus.containerimage.infrastructure;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.jdbc.repository.config.AbstractJdbcConfiguration;
